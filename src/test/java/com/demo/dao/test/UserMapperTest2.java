@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import com.demo.bean.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,9 +28,8 @@ public class UserMapperTest2 extends BaseJunit4Test{
 	@Transactional   //标明此方法需使用事务  
 	@Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚  
 	public void testDeleteByPrimaryKey() {
-		Integer id=1;
-		Map<String,Object> jsonData=userMapper.selectByPrimaryKey(id);
-		log.info("*********************"+jsonData.toString());
+/*		Integer id=1;*/
+		
 		fail("Not yet implemented");
 	}
 
@@ -37,6 +37,15 @@ public class UserMapperTest2 extends BaseJunit4Test{
 	@Transactional   //标明此方法需使用事务  
 	@Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚  
 	public void testInsert() {
+		Map<String,Object> userMap=new HashMap<String,Object>();
+		Integer id=3;
+		String name="王浩";
+		String password="1q2w!Q@W";
+		userMap.put("id", id);
+		userMap.put("name", name);
+		userMap.put("password", password);
+		int result=userMapper.insert(userMap);
+		log.info(result);
 		fail("Not yet implemented");
 	}
 
@@ -44,6 +53,15 @@ public class UserMapperTest2 extends BaseJunit4Test{
 	@Transactional   //标明此方法需使用事务  
 	@Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚  
 	public void testInsertSelective() {
+		Map<String,Object> userMap=new HashMap<String,Object>();
+		Integer id=5;
+		String name="王浩";
+		String password="1q2w!Q@W";
+		userMap.put("id", id);
+		userMap.put("name", name);
+		userMap.put("password", password);
+		int result=userMapper.insert(userMap);
+		log.info("//*********************///"+result);
 		fail("Not yet implemented");
 	}
 
@@ -51,7 +69,9 @@ public class UserMapperTest2 extends BaseJunit4Test{
 	@Transactional   //标明此方法需使用事务  
 	@Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚  
 	public void testSelectByPrimaryKey() {
-		fail("Not yet implemented");
+		Integer id=1;
+		Map<String,Object> jsonData=userMapper.selectByPrimaryKey(id);
+		log.info("*********************"+jsonData.toString());
 	}
 
 	@Test
@@ -79,19 +99,19 @@ public class UserMapperTest2 extends BaseJunit4Test{
 	@Transactional   //标明此方法需使用事务  
 	@Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚  
 	public void testSelectAllUsers() {
-		ArrayList<User> userList=(ArrayList<User>) userMapper.selectAllUsers();
-		List<Object> userMaps = null;
+		List<Map<String,Object>> userList= userMapper.selectAllUsers();
+/*		List<Object> userMaps = null;*/
 		for(int i=0;i<userList.size();i++) {
 			/*userMaps.add(userList[i]);*/
-			User user=userList.get(i);
-			userMaps.add(user.getUserMap());
-			log.info("************"+user.getUserMap().toString()+"****************");
-			log.equals("*****************");
-			log.equals("*****************");
-			log.equals("*****************");
-			log.equals("******************");
+			Map<String,Object> userMap=userList.get(i);
+			/*userMaps.add(user.getUserMap());*/
+			log.info("************"+userMap.toString()+"****************");
+			log.info("*****************");
+			log.info("*****************");
+			log.info("*****************");
+			log.info("******************");
 		}
-		log.info("******************"+userMaps.toString()+"*******************");
+		log.info("******************"+userList.toString()+"*******************");
 		fail("Not yet implemented");		
 	}
 

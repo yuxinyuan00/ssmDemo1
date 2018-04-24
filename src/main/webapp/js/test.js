@@ -1,6 +1,6 @@
 function getServer(){
 	$.ajax({
-		url : "http://localhost:8080/ssmDemo1/ioc" ,
+		url : "http://localhost:8080/ssmDemo1/queryAllUsers" ,
 	    type : 'get',
 	    timeout : 20000,
 	    async:false,
@@ -19,7 +19,7 @@ function postServer(){
 			"sex":"女"
 	}
 	$.ajax({
-		url : "http://localhost:8080/ssmDemo1/ioc" ,
+		url : "http://localhost:8080/ssmDemo1/queryAllUsers" ,
 	    type : 'post',
 	    timeout : 20000,
 	    async:false,

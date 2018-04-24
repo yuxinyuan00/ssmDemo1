@@ -25,7 +25,7 @@ public class UserServiceImpl extends ActionSupport implements UserMapper {
 	}
 
 	@Override
-	public int insert(User record) {
+	public int insert(Map<String,Object> userMap) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -61,9 +61,22 @@ public class UserServiceImpl extends ActionSupport implements UserMapper {
 	}
 
 	@Override
-	public List<User> selectAllUsers() {
+	public List<Map<String, Object>> selectAllUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Map<String,Object>> userList=userMapper.selectAllUsers();
+		return userList;
+	}
+
+	@Override
+	public int insert(User record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insertSelective(Map<String, Object> userMap) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

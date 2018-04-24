@@ -11,6 +11,7 @@ public interface UserMapper {
     int insert(User record);
 
     int insertSelective(User record);
+    int insertSelective(Map<String, Object> userMap);
 
     Map<String,Object> selectByPrimaryKey(Integer id);
     
@@ -20,5 +21,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-	List<User> selectAllUsers();
+	List<Map<String,Object>> selectAllUsers();
+
+	int insert(Map<String, Object> userMap);
 }
