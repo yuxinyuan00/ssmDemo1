@@ -5,10 +5,16 @@
 <struts>
     <constant name="struts.objectFactory" value="spring" />
     <package name="hs" extends="json-default">
-     <action name="ioc" class="IocAction">
+     <action name="queryUser" class="IocAction" method="queryAllUsers">
                <result name="success" type="json">
-                     <param name="root">jsonData</param>
+                     <param name="excludeProperties">useList</param>
                  </result>
      </action>
+     <!--  <action name="queryAllUsers" class="IocAction" method="queryAllUsers">
+               <result name="success" type="json">
+                     <param name="root">useList</param>
+                     <param name="includeProperties">userList</param> 
+                 </result>
+     </action> -->
 </package>
 </struts>

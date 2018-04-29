@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>   
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"  
-    debug="false">  
+    debug="true">  
       
     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">  
         <layout class="org.apache.log4j.PatternLayout">  
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l]%n%m%n%n"/>  
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] %n%m%n%n"/>  
         </layout>  
-    </appender>  
+    </appender> 
+     <logger name="com.springframework" additivity="false">
+         <level value="ERROR" />
+     </logger>  
+      <logger name="org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl" additivity="true"> 
+         <level value="DEBUG" />  
+     </logger> 
     <!-- 下面是打印 mybatis语句的配置 -->  
     <logger name="com.ibatis" additivity="false">  
         <level value="DEBUG" />  
@@ -30,7 +36,7 @@
     </logger>  
   
     <root>  
-        <level value="DEBUG" />  
+        <level value="debug" />  
         <appender-ref ref="CONSOLE" />  
 <!--         <appender-ref ref="FILE" /> -->  
 <!--         <appender-ref ref="framework" /> -->  

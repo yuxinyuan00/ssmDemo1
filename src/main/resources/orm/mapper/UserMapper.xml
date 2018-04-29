@@ -19,7 +19,7 @@
     from t_user t
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAllUsers" resultMap="BaseResultList">
+  <select id="selectAllUsers" resultMap="BaseResultMap">
     select t.id as id,t.name as name,t.password as password
     from t_user t
      limit 1,10;
@@ -28,11 +28,11 @@
     delete from t_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.demo.bean.User">
+  <insert id="insert" parameterType="java.util.Map">
     insert into t_user (id, name, password)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{password,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.demo.bean.User">
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
